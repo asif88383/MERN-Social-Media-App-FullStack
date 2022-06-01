@@ -1,4 +1,5 @@
 import UserModel from "../Models/userModel.js";
+import bcrypt from "bcrypt";
 
 // get a user
 export const getUser = async (req, res) => {
@@ -26,10 +27,16 @@ export const updateUser = async (req, res) => {
 
     if(id===currentUserId || currentUserAdminStatus){
         try{
-            const user = await UserModel.findbyIdAndUpdate(id, req.body, {new: true});
+            if(password){
+                const salt = await bcrypt.genSalt(10);
+                req.body.password = await bcrypt.hash(password, salt);
+            }
+            const user = await UserModel.findByIdAndUpdate(id, req.body, {new: true});
             res.status(200).json(user);
         }catch(error){
-            res.status(500).json(err);
+            res.status(500).json(error);
         }
+    }else{
+        res.status(401).json("Access Denied! You are not authorized to update this user");
     }
 }
