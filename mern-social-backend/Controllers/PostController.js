@@ -25,3 +25,21 @@ export const getPost = async (req, res) => {
     }
 }
 
+// Update a post 
+export const updastePost = async(req, res) => {
+    const postId = req.params.id;
+    const {userId} = req.body;
+
+    try {
+        const post = await PostModel.findById(postId);
+        if(post.userId === userId){
+            await post.updasteOne({$set: req.body});
+            res.status(200).json("Post updated successfully");
+        }else{
+            res.status(401).json("Unauthorized");
+        }
+    }catch(err){
+        res.status(500).json(`Error updating post: ${err}`);
+    }
+}
+
