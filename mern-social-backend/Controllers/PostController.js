@@ -27,7 +27,7 @@ export const getPost = async (req, res) => {
 }
 
 // Update a post 
-export const updastePost = async(req, res) => {
+export const updatePost = async(req, res) => {
     const postId = req.params.id;
     const {userId} = req.body;
 
