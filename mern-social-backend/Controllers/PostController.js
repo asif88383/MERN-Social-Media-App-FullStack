@@ -14,3 +14,14 @@ export const createPost = async (req, res) => {
     }
 }
 
+// Get a post 
+export const getPost = async (req, res) => {
+    const postId = req.params.id;
+    try {
+        const post = await PostModel.findById(postId);
+        res.status(200).json(post);
+    }catch(err){
+        res.status(500).json(`Error getting post: ${err}`);
+    }
+}
+
