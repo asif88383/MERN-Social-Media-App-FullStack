@@ -1,7 +1,7 @@
-import exporess from 'express';
-import { registerUser, loginUser } from "../Controllers/AuthController.js";
+import express from "express";
+import { loginUser, registerUser } from "../Controllers/AuthController.js";
 
-const router = exporess.Router();
+const router = express.Router();
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
