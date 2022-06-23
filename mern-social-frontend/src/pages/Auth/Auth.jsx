@@ -78,40 +78,6 @@ const Auth = () => {
   );
 };
 
-function Login() {
-  return (
-    <div className="a-right">
-      <form action="" className="infoForm authForm">
-        <h3>Log In</h3>
-
-        <div>
-          <input
-            type="text"
-            className="infoInput"
-            placeholder="Username"
-            name="username"
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            className="infoInput"
-            placeholder="Password"
-            name="password"
-          />
-        </div>
-        <div>
-          <span style={{ fontSize: "12px" }}>
-            Don't have and account? <a href="/signup">Sign Up</a>
-          </span>
-          <button type="submit" className="infoButton button">
-            Log In
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-}
 
 function SignUp() {
   return (
