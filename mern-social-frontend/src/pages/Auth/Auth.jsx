@@ -1,10 +1,13 @@
-import React from 'react'
-import './Auth.css'
-import Logo from '../../img/logo.png'
+import React, { useState } from "react";
+import "./Auth.css";
+import Logo from "../../img/logo.png";
 
 const Auth = () => {
+  const [isSignUp, SetIsSignUp] = useState(false);
+
   return (
-    <div className='Auth'>
+    <div className="Auth">
+      {/* left side? */}
       <div className="a-left">
         <img src={Logo} alt="logo" />
         <div className="Webname">
@@ -13,36 +16,104 @@ const Auth = () => {
         </div>
       </div>
 
-      <Login />
-      {/* <SignUp /> */}
-    </div>
-  )
-}
+      {/* right side */}
+      <div className="a-right">
+        <form action="" className="infoForm authForm">
+          <h3>{isSignUp ? "Sign up" : "Log in"}</h3>
 
-function Login(){
-  return(
+          {isSignUp && (
+            <div>
+              <input
+                type="text"
+                className="infoInput"
+                placeholder="First Name"
+                name="firstname"
+              />
+              <input
+                type="text"
+                className="infoInput"
+                placeholder="Last Name"
+                name="lastname"
+              />
+            </div>
+          )}
+
+          <div>
+            <input
+              type="text"
+              className="infoInput"
+              placeholder="Username"
+              name="username"
+            />
+          </div>
+
+          <div>
+            <input
+              type="password"
+              className="infoInput"
+              placeholder="Password"
+              name="password"
+            />
+            {isSignUp && (
+              <input
+                type="password"
+                className="infoInput"
+                placeholder="Confirm Password"
+                name="confirmpassword"
+              />
+            )}
+          </div>
+
+          <div>
+            <span style={{ fontSize: "12px" }}>
+              Already have an Account? <a href="/signin">Log In</a>
+            </span>
+          </div>
+          <button type="submit" className="infoButton button">
+            {isSignUp? "Sign Up" : "Log In"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+function Login() {
+  return (
     <div className="a-right">
       <form action="" className="infoForm authForm">
         <h3>Log In</h3>
 
         <div>
-          <input type="text" className="infoInput" placeholder='Username' name='username'/>
+          <input
+            type="text"
+            className="infoInput"
+            placeholder="Username"
+            name="username"
+          />
         </div>
         <div>
-          <input type="password" className="infoInput" placeholder='Password' name='password'/>
+          <input
+            type="password"
+            className="infoInput"
+            placeholder="Password"
+            name="password"
+          />
         </div>
         <div>
-          <span style={{fontSize: '12px'}}>
+          <span style={{ fontSize: "12px" }}>
             Don't have and account? <a href="/signup">Sign Up</a>
           </span>
-          <button type="submit" className="infoButton button">Log In</button>
+          <button type="submit" className="infoButton button">
+            Log In
+          </button>
         </div>
       </form>
     </div>
-  )
+  );
 }
 
-function SignUp(){
+function SignUp() {
   return (
     <div className="a-right">
       <form action="" className="infoForm authForm">
@@ -88,14 +159,16 @@ function SignUp(){
         </div>
 
         <div>
-          <span style={{fontSize: '12px'}}>
+          <span style={{ fontSize: "12px" }}>
             Already have an Account? <a href="/signin">Log In</a>
           </span>
         </div>
-        <button type="submit" className="infoButton button">Sign Up</button>
+        <button type="submit" className="infoButton button">
+          Sign Up
+        </button>
       </form>
     </div>
   );
 }
 
-export default Auth
+export default Auth;
