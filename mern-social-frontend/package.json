@@ -2,7 +2,7 @@
   "name": "mern-social",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http//:localhost:8816",
+  "proxy": "https://localhost:8816",
   "dependencies": {
     "@iconscout/react-unicons": "^1.1.6",
     "@mantine/core": "^4.2.11",
